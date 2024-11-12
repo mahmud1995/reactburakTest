@@ -8,12 +8,27 @@ import PausedOrders from "./PausedOrders";
 import ProcessOrders from "./ProcessOrders";
 import FinishedOrders from "./FinishedOrders";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { setPausedOrders, setProcessOrders, setFinishedOrders } from "./slice";
+import { Dispatch } from "@reduxjs/toolkit";
+import { Product } from "../../../lib/types/product";
+import { Member } from "../../../lib/types/member";
+import { Order } from "../../../lib/types/order";
 import "../../../css/orders.css";
-
+import { useDispatch } from "react-redux";
+/** REDUX SLICE & SELECTOR */
+const actionDispatch = (dispatch: Dispatch) => ({
+    setPausedOrders: (data: Order[]) => dispatch(setPausedOrders(data)),
+    setProcessOrders: (data: Order[]) => dispatch(setProcessOrders(data)),
+    setFinishedOrders: (data: Order[]) => dispatch(setFinishedOrders(data)),
+});
+    
 
 export default function OrdersPage() {
     // React Hook lari haqida kelajakda gaplashamiz
+    const { setPausedOrders, setProcessOrders, setFinishedOrders } = actionDispatch(useDispatch());
     const [value, setValue] = useState("1"); // by default 1chi panel ni och mantigi
+
+     /*  HANDLERS */
 
     const handleChange = (e: SyntheticEvent, newValue: string) => {
         setValue(newValue)
