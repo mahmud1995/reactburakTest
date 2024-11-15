@@ -12,7 +12,6 @@ import Footer from './components/footer';
 import useBasket from './hooks/useBasket';
 import AuthenticationModal from './components/auth';
 import { T } from "../lib/types/common";
-import Test from './screens/Test';
 import "../css/app.css";
 import "../css/navbar.css";
 import "../css/footer.css";
